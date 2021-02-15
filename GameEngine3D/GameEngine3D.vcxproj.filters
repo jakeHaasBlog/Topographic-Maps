@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="framework">
+      <UniqueIdentifier>{8698b363-623a-4d05-b047-6cbd0075868b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="framework\ExternalLibraries">
+      <UniqueIdentifier>{b85b307f-5efd-47d7-af7e-26798cd95ae0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="framework\TextRendering">
+      <UniqueIdentifier>{3407c602-d84c-454b-8e90-d326b5bf1ce1}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\framework\IndexBuffer.cpp">
+      <Filter>framework</Filter>
+    </ClCompile>
+    <ClCompile Include="..\framework\OpenGLdebug.cpp">
+      <Filter>framework</Filter>
+    </ClCompile>
+    <ClCompile Include="..\framework\Shader.cpp">
+      <Filter>framework</Filter>
+    </ClCompile>
+    <ClCompile Include="..\framework\VertexArray.cpp">
+      <Filter>framework</Filter>
+    </ClCompile>
+    <ClCompile Include="..\framework\VertexBuffer.cpp">
+      <Filter>framework</Filter>
+    </ClCompile>
+    <ClCompile Include="..\framework\WindowManager.cpp">
+      <Filter>framework</Filter>
+    </ClCompile>
+    <ClCompile Include="..\framework\Quad.cpp">
+      <Filter>framework\TextRendering</Filter>
+    </ClCompile>
+    <ClCompile Include="..\framework\InputManager.cpp">
+      <Filter>framework</Filter>
+    </ClCompile>
+    <ClCompile Include="Source.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GameLogic.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\framework\Geometry.cpp">
+      <Filter>framework</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\framework\WindowManager.h">
+      <Filter>framework</Filter>
+    </ClInclude>
+    <ClInclude Include="..\framework\IndexBuffer.h">
+      <Filter>framework</Filter>
+    </ClInclude>
+    <ClInclude Include="..\framework\OpenGLdebug.h">
+      <Filter>framework</Filter>
+    </ClInclude>
+    <ClInclude Include="..\framework\Shader.h">
+      <Filter>framework</Filter>
+    </ClInclude>
+    <ClInclude Include="..\framework\VertexArray.h">
+      <Filter>framework</Filter>
+    </ClInclude>
+    <ClInclude Include="..\framework\VertexBuffer.h">
+      <Filter>framework</Filter>
+    </ClInclude>
+    <ClInclude Include="..\framework\Quad.h">
+      <Filter>framework\TextRendering</Filter>
+    </ClInclude>
+    <ClInclude Include="..\framework\InputManager.h">
+      <Filter>framework</Filter>
+    </ClInclude>
+    <ClInclude Include="..\framework\SpacialPartition.h">
+      <Filter>framework</Filter>
+    </ClInclude>
+    <ClInclude Include="GameLogic.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Geometry.h">
+      <Filter>framework</Filter>
+    </ClInclude>
+    <ClInclude Include="..\externalLibs\PerlinNoise-master\PerlinNoise.hpp">
+      <Filter>framework\ExternalLibraries</Filter>
+    </ClInclude>
+    <ClInclude Include="..\externalLibs\stb_image\stb_image_write.h">
+      <Filter>framework\ExternalLibraries</Filter>
+    </ClInclude>
+    <ClInclude Include="..\externalLibs\stb_image\stb_image.h">
+      <Filter>framework\ExternalLibraries</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
