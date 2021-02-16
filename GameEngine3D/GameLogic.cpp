@@ -32,6 +32,10 @@ GLuint GameLogic::tex = 0;
 unsigned int GameLogic::PIX_X = 1920;
 unsigned int GameLogic::PIX_Y = 1080; 
 unsigned int GameLogic::SOFTNESS_PIX = 50;
+float GameLogic::waterLevel = 0.5f;
+double GameLogic::octaves = 10;
+double GameLogic::frequency = 800;
+unsigned int GameLogic::posterizationLevels = 20;
 
 std::vector<double> GameLogic::randomNumbers((PIX_X + SOFTNESS_PIX) * (PIX_Y + SOFTNESS_PIX));
 
@@ -102,7 +106,9 @@ void GameLogic::keyPressed(int key, int action, int mods)
 
 		uint8_t* pixels_int = new uint8_t[PIX_X * PIX_Y * 3];
 		int i = 0;
-		for (std::array<float, 3>& p : pixels) {
+		for (int j = 0; j < pixels.size(); j++) {
+			std::array<float, 3>& p = pixels[j];
+
 			p[0] = std::clamp(p[0], 0.0f, 1.0f);
 			p[1] = std::clamp(p[1], 0.0f, 1.0f);
 			p[2] = std::clamp(p[2], 0.0f, 1.0f);
@@ -117,6 +123,7 @@ void GameLogic::keyPressed(int key, int action, int mods)
 
 			i += 3;
 		}
+		stbi_flip_vertically_on_write(true);
 		stbi_write_png("../assets/stbpng.png", PIX_X, PIX_Y, 3, pixels_int, 3 * PIX_X);
 		stbi_write_jpg("../assets/stbjpg.jpg", PIX_X, PIX_Y, 3, pixels_int, 100);
 		delete[] pixels_int;
@@ -131,6 +138,14 @@ void GameLogic::keyPressed(int key, int action, int mods)
 		std::cin >> PIX_Y;
 		std::cout << "Smoothing (default 50): ";
 		std::cin >> SOFTNESS_PIX;
+		std::cout << "Water Level (default 0.5): ";
+		std::cin >> waterLevel;
+		std::cout << "Noise Octaves (default 10): ";
+		std::cin >> octaves;
+		std::cout << "Noise Frequency (default 800): ";
+		std::cin >> frequency;
+		std::cout << "Posterization Levels (default 20): ";
+		std::cin >> posterizationLevels;
 
 		randomNumbers = std::vector<double>((PIX_X + SOFTNESS_PIX) * (PIX_Y + SOFTNESS_PIX));
 		pixels = std::vector<std::array<float, 3>>(PIX_X * PIX_Y);
@@ -229,10 +244,8 @@ void GameLogic::loadTexturePixelsPart(int l, int r, int t, int b)
 			float brightness = 0.0f;
 			noiseLevel = contrast * (noiseLevel - 0.5f) + 0.5f + brightness;
 
-			int topoLevels = 20;
-			noiseLevel = (int)(noiseLevel * topoLevels) / (float)topoLevels;
+			noiseLevel = (int)(noiseLevel * posterizationLevels) / (float)posterizationLevels;
 
-			float waterLevel = 0.5f;
 			if (noiseLevel > waterLevel) {
 				// land
 				noiseLevel -= waterLevel;
@@ -309,8 +322,6 @@ void GameLogic::loadRandomNumbers()
 
 void GameLogic::loadRandomNumbersPart(int lIndex, int rIndex, siv::PerlinNoise* perlin)
 {
-	static double octaves = 10;
-	static double frequency = 800;
 
 	for (int i = 0; i < rIndex - lIndex; i++) {
 		int x = (i + lIndex) % (PIX_X + SOFTNESS_PIX);

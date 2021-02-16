@@ -39,4 +39,8 @@ private:
 	static void fillTexture();
 
 	static unsigned int PIX_X, PIX_Y, SOFTNESS_PIX;
+	static float waterLevel;
+	static double octaves;
+	static double frequency;
+	static unsigned int posterizationLevels;
 };
